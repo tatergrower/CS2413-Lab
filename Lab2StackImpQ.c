@@ -7,11 +7,11 @@ typedef struct {
     int front;
     int rear;
 } MyStack;
-
+//enqueue stack with given value
 void nq(MyStack* obj, qnode* val) {
     obj->arr[++obj->rear] = val;
     if (obj->front == -1){
-        obj->front = 0;
+        obj->front = 0;//for index purposes
     }
 }
 
@@ -25,24 +25,26 @@ qnode* dq(MyStack* obj) {
     }
     return val;
 }
-
+//creates empty stack
 MyStack* myStackCreate() {
     MyStack* stack = (MyStack*)malloc(sizeof(MyStack));
     stack->front = -1;
     stack->rear = -1;
     return stack;
 }
-
+//adds data to node at front, then dqs front, adding to rear
 void myStackPush(MyStack* obj, int x) {
     qnode* node = (qnode*)malloc(sizeof(qnode));
     node->data = x;
     nq(obj, node);
-    while(obj->rear > obj->front){
-        qnode* front=dq(obj);
-        nq(obj,front);
+    int size = obj->rear - obj->front + 1;
+    while (size > 1) {
+        qnode* front = dq(obj);
+        nq(obj, front);
+        size--;
     }
 }
-
+//return front val
 int myStackPop(MyStack* obj) {
     qnode* front = dq(obj);
     int val = front->data;
