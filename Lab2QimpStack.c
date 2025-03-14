@@ -18,7 +18,7 @@ void myQueuePush(MyQueue* obj, int x) {
     }
     obj->Stack1[++obj->Stack1Top] = x;
     while (obj->Stack1Top != -1) {
-        obj->Stack2[++obj->Stack2Top] = obj->Stack1[obj->Stack1Top--];
+        obj->Stack2[++obj->Stack2Top] = obj->Stack1[obj->Stack1Top--];{
     }
 }
 
