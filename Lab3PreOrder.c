@@ -22,5 +22,4 @@ int* preorderTraversal(struct TreeNode* root, int* returnSize) {
     *returnSize=0;
     preOrder(root, arr, returnSize);
     return arr;
-    free(arr);
 }
