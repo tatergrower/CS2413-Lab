@@ -13,7 +13,6 @@ void inOrder(struct TreeNode* root, int* arr, int* returnSize) {
     if (root != NULL) {
         inOrder(root->left, arr, returnSize);
         arr[(*returnSize)++] = root->val;
-        // preOrder(root->left, arr, returnSize);
         inOrder(root->right, arr, returnSize);
     }
 }
